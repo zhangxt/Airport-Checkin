@@ -36,9 +36,10 @@ jobs:
       - name: Run sign
         env:
           qiwei: ${{ secrets.qiwei }}
-          EMAIL: ${{ secrets.EMAIL }}
           EMAIL1: ${{ secrets.EMAIL1 }}
           EMAIL2: ${{ secrets.EMAIL2 }}
+          EMAIL3: ${{ secrets.EMAIL3 }}
+          EMAIL4: ${{ secrets.EMAIL4 }}
           PASSWORD: ${{ secrets.PASSWORD }}
           BASE_URL: ${{ secrets.BASE_URL }}
   
