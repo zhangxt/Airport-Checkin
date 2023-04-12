@@ -37,6 +37,7 @@ jobs:
         env:
           qiwei: ${{ secrets.qiwei }}
           EMAIL: ${{ secrets.EMAIL }}
+          EMAIL1: ${{ secrets.EMAIL1 }}
           PASSWORD: ${{ secrets.PASSWORD }}
           BASE_URL: ${{ secrets.BASE_URL }}
   
