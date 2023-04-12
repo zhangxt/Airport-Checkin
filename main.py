@@ -3,6 +3,7 @@ import threading
 import requests
 import json
 import os
+from datetime import datetime
 
 requests.packages.urllib3.disable_warnings()
 
@@ -52,16 +53,16 @@ def sync_send_wechat_msg(content):
     t.start()
 
 
-
+curtime = str(datetime.now())
 result = checkin(email=os.environ.get('EMAIL1'))
-sync_send_wechat_msg(os.environ.get('EMAIL1')+"---"+result)
+sync_send_wechat_msg(os.environ.get('EMAIL1')+"---"+curtime+result)
 
 result = checkin(email=os.environ.get('EMAIL2'))
-sync_send_wechat_msg(os.environ.get('EMAIL2')+"---"+result)
+sync_send_wechat_msg(os.environ.get('EMAIL2')+"---"+curtime+result)
 
 
 result = checkin(email=os.environ.get('EMAIL3'))
-sync_send_wechat_msg(os.environ.get('EMAIL3')+"---"+result)
+sync_send_wechat_msg(os.environ.get('EMAIL3')+"---"+curtime+result)
 
 result = checkin(email=os.environ.get('EMAIL4'))
-sync_send_wechat_msg(os.environ.get('EMAIL4')+"---"+result)
+sync_send_wechat_msg(os.environ.get('EMAIL4')+"---"+curtime+result)
