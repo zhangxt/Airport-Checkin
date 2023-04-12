@@ -1,8 +1,14 @@
+import threading
+
 import requests
 import json
 import os
 
 requests.packages.urllib3.disable_warnings()
+
+
+qiwei = os.environ.get('qiwei')
+
 SCKEY = os.environ.get('SCKEY')
 TG_BOT_TOKEN = os.environ.get('TGBOT')
 TG_USER_ID = os.environ.get('TGUSERID')
@@ -33,14 +39,23 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
     response = session.post(base_url + '/user/checkin', headers=headers,
                             verify=False)
     response = json.loads(response.text)
+    print(response)
     print(response['msg'])
     return response['msg']
 
 
+
+def send_wechat_msg(content, webhook_url):
+    data = {"msgtype": "markdown", "markdown": {"content": content}}
+    r = requests.post(url=webhook_url, data=json.dumps(data, ensure_ascii=False).encode('utf-8'), verify=False)
+    return r.text, r.status_code
+
+def sync_send_wechat_msg(content):
+    t = threading.Thread(target=send_wechat_msg, args=(content,qiwei))
+    t.start()
+
+
+
 result = checkin()
-if SCKEY != '':
-    sendurl = 'https://sctapi.ftqq.com/' + SCKEY + '.send?title=机场签到&desp=' + result
-    r = requests.get(url=sendurl)
-if TG_USER_ID != '':
-    sendurl = f'https://api.telegram.org/bot{TG_BOT_TOKEN}/sendMessage?chat_id={TG_USER_ID}&text={result}&disable_web_page_preview=True'
-    r = requests.get(url=sendurl)
+
+sync_send_wechat_msg(os.environ.get('EMAIL')+"---"+result)
