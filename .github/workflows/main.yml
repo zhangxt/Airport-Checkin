@@ -2,7 +2,7 @@ name: "Airport Checkin"
 
 on:
   schedule:
-    - cron: "0 22 * * *"  # scheduled at 06:00 (UTC+8) everyday
+    - cron: "5 * * * *"  # scheduled at 06:00 (UTC+8) everyday
   workflow_dispatch:
 
 env:
@@ -35,11 +35,10 @@ jobs:
           pip install -r requirements.txt
       - name: Run sign
         env:
-          SCKEY: ${{ secrets.SCKEY }}
+          qiwei: ${{ secrets.qiwei }}
           EMAIL: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
           BASE_URL: ${{ secrets.BASE_URL }}
-          TGBOT: ${{ secrets.TGBOT }}
-          TGUSERID: ${{ secrets.TGUSERID }}
+  
         run: |
           python3 ./main.py
