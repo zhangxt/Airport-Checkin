@@ -9,9 +9,6 @@ requests.packages.urllib3.disable_warnings()
 
 qiwei = os.environ.get('qiwei')
 
-SCKEY = os.environ.get('SCKEY')
-TG_BOT_TOKEN = os.environ.get('TGBOT')
-TG_USER_ID = os.environ.get('TGUSERID')
 
 
 def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
@@ -56,6 +53,8 @@ def sync_send_wechat_msg(content):
 
 
 
-result = checkin()
-
+result = checkin(email=os.environ.get('EMAIL'))
 sync_send_wechat_msg(os.environ.get('EMAIL')+"---"+result)
+
+result = checkin(email=os.environ.get('EMAIL2'))
+sync_send_wechat_msg(os.environ.get('EMAIL2')+"---"+result)
