@@ -55,14 +55,14 @@ def sync_send_wechat_msg(content):
 
 curtime = str(datetime.now())
 result = checkin(email=os.environ.get('EMAIL1'))
-sync_send_wechat_msg(os.environ.get('EMAIL1')+"---"+curtime+result)
+sync_send_wechat_msg(os.environ.get('EMAIL1')+"--1-"+curtime+result)
 
 result = checkin(email=os.environ.get('EMAIL2'))
-sync_send_wechat_msg(os.environ.get('EMAIL2')+"---"+curtime+result)
+sync_send_wechat_msg(os.environ.get('EMAIL2')+"--2-"+curtime+result)
 
 
 result = checkin(email=os.environ.get('EMAIL3'))
-sync_send_wechat_msg(os.environ.get('EMAIL3')+"---"+curtime+result)
+sync_send_wechat_msg(os.environ.get('EMAIL3')+"--3-"+curtime+result)
 
 result = checkin(email=os.environ.get('EMAIL4'))
-sync_send_wechat_msg(os.environ.get('EMAIL4')+"---"+curtime+result)
+sync_send_wechat_msg(os.environ.get('EMAIL4')+"--4-"+curtime+result)
