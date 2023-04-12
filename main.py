@@ -53,8 +53,15 @@ def sync_send_wechat_msg(content):
 
 
 
-result = checkin(email=os.environ.get('EMAIL'))
-sync_send_wechat_msg(os.environ.get('EMAIL')+"---"+result)
+result = checkin(email=os.environ.get('EMAIL1'))
+sync_send_wechat_msg(os.environ.get('EMAIL1')+"---"+result)
 
 result = checkin(email=os.environ.get('EMAIL2'))
 sync_send_wechat_msg(os.environ.get('EMAIL2')+"---"+result)
+
+
+result = checkin(email=os.environ.get('EMAIL3'))
+sync_send_wechat_msg(os.environ.get('EMAIL3')+"---"+result)
+
+result = checkin(email=os.environ.get('EMAIL4'))
+sync_send_wechat_msg(os.environ.get('EMAIL4')+"---"+result)
