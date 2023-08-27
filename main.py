@@ -33,7 +33,12 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
     ##, verify=False)
     ## 需要修改验证这部分 0827
 
+    # Access the cookies from the session
+    cookies = session.cookies
 
+    # Iterate over the cookies and print their content
+    for cookie in cookies:
+       print(cookie.name, cookie.value)
                         
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) '
