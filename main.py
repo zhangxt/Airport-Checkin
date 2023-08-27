@@ -41,8 +41,9 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
                       'Chrome/56.0.2924.87 Safari/537.36',
         'Referer': base_url + '/user'
     }
-    response = session.post(base_url + '/user/checkin', headers=headers,
-                            verify=False)
+    response = session.post(base_url + '/user/checkin', headers=headers）
+    #,
+    #verify=False)
 
 
                         
