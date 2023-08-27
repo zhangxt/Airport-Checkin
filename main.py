@@ -17,7 +17,8 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
     email = email.split('@')
     email = email[0] + '%40' + email[1]
     session = requests.session()
-    session.get(base_url, verify=False)
+    ## 使用session对象发送一个GET请求到base_url，并且禁用了证书验证（verify=False）。这个请求的目的可能是为了建立与服务器的连接或者获取一些必要的信息。
+    #session.get(base_url, verify=False)
     login_url = base_url + '/auth/login'
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) '
@@ -27,7 +28,13 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
     }
     post_data = 'email=' + email + '&passwd=' + password + '&code='
     post_data = post_data.encode()
-    response = session.post(login_url, post_data, headers=headers, verify=False)
+    
+    response = session.post(login_url, post_data, headers=headers)
+    ##, verify=False)
+    ## 需要修改验证这部分 0827
+
+
+                        
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) '
                       'AppleWebKit/537.36 (KHTML, like Gecko) '
@@ -36,6 +43,9 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
     }
     response = session.post(base_url + '/user/checkin', headers=headers,
                             verify=False)
+
+
+                        
     response = json.loads(response.text)
     print(response)
     print(response['msg'])
