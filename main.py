@@ -47,8 +47,8 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
         'Referer': base_url + '/user'
     }
     response = session.post(base_url + '/user/checkin', headers=headers）
-    #,
-    #verify=False)
+    ## ,
+    ## verify=False)
 
 
     print(response)  
