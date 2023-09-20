@@ -51,7 +51,7 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
     ## verify=False)
 
 
-                        
+    print(response)                    
     response = json.loads(response.text)
     print(response)
     print(response['msg'])
