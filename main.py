@@ -53,7 +53,7 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
 
     print(response)  
     try:
-        print(response.text)
+        print(response.text.encode('utf-8'))
         response = json.loads(response.text)
         print(response)
         print(response['msg'])
