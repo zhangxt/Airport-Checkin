@@ -47,8 +47,8 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
         'Referer': base_url + '/user'
     }
     response = session.post(base_url + '/user/checkin', headers=headers)
-    ## ,
-    ## verify=False)
+     ,
+    verify=False)
 
 
     print(response)  
@@ -66,6 +66,7 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
 def send_wechat_msg(content, webhook_url):
     data = {"msgtype": "markdown", "markdown": {"content": content}}
     r = requests.post(url=webhook_url, data=json.dumps(data, ensure_ascii=False).encode('utf-8'), verify=False)
+    print(data)
     return r.text, r.status_code
 
 def sync_send_wechat_msg(content):
