@@ -3,6 +3,7 @@ import threading
 import requests
 import json
 import os
+import brotli
 from datetime import datetime
 
 requests.packages.urllib3.disable_warnings()
@@ -53,6 +54,10 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
 
     print(response)  
     try:
+        if response.headers.get('Content-Encdoing')=='br':
+            data = brotli.decompress(response.content)
+            print(data.decodde('utf-8'))
+            return data.decodde('utf-8')
         print(response.text.encode('utf-8'))
         response = json.loads(response.text)
         print(response)
